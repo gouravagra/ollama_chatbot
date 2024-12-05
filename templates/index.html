@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ollama Chatbot</title>
+</head>
+<body>
+    <h1>Ollama Chatbot</h1>
+
+    <div id="chat-history">
+        {% for entry in chat_history %}
+            {% if entry['role'] == 'user' %}
+                <p><strong>User:</strong> {{ entry['content'] }}</p>
+            {% else %}
+                <p><strong>Bot:</strong> {{ entry['content'] }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <form action="/chat" method="post">
+        <label for="user_input">You:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Send</button>
+    </form>
+
+</body>
+</html>
